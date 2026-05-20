@@ -1,5 +1,5 @@
 # smartphone-theft-detection-
-So I'm Likhitha M N, currently pursuing my engineering in CSE branch aqt Vidyavardhaka College of Engineering, Mysore.
+So I'm Likhitha M N, currently pursuing my engineering in CSE branch at Vidyavardhaka College of Engineering, Mysore.
 project title : Smart Phone Theft Detection and Real-Time Tracking system.
 So Basically, our app helps users to get thier phone or recovery their phone soon. Like they are able to track the location, live location of lost phone. But 
 only if they use our application. So the user has to create a PIN and add trusted contacts in our application. If that phone is lost, the our app will come into act.
