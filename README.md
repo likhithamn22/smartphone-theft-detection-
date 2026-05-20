@@ -1,1 +1,6 @@
 # smartphone-theft-detection-
+So I'm Likhitha M N, currently pursuing my engineering in CSE branch aqt Vidyavardhaka College of Engineering, Mysore.
+project title : Smart Phone Theft Detection and Real-Time Tracking system.
+So Basically, our app helps users to get thier phone or recovery their phone soon. Like they are able to track the location, live location of lost phone. But 
+only if they use our application. So the user has to create a PIN and add trusted contacts in our application. If that phone is lost, the our app will come into act.
+Firstly the user tries to call that lost phone from other numbers, if the theft cuts the call for 2 times also, then pin entering screen will appear on the screen. Offcousre the thief doeswn't know the PIN, so he enters the wrong PIN for trying purpose. And the app will send the current location to the trusted contacts as well as the4 live tracking happens. If the thief tries to switch off, then also PIN entering screen appears and same actions will carried forward. If the thief tries reomve the SIM, then the Last known location — Before the phone goes offline, the app continuously pushes location to a cloud server (Firebase). Trusted contacts can see the last known location even after the phone dies. 
