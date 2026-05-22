@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TheftGuard Live Tracker</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <style>
+        body { margin:0; font-family:Arial; background:#1A237E; color:white; }
+        h2 { text-align:center; padding:20px; margin:0; }
+        #status { text-align:center; color:#90CAF9; padding:5px; }
+        #map { height: 80vh; width:100%; }
+    </style>
+</head>
+<body>
+
+    <h2>TheftGuard - Live Location</h2>
+    <p id="status">Waiting for location data...</p>
+    <div id="map"></div>
+
+    <script>
+        // 1. YOUR FIREBASE CONFIGURATION (Step 11 Shortcut)
+        // Copy the Firebase URL link from your MIT App Inventor screen and paste it between the quotes below!
+        const firebaseConfig = {
+            databaseURL: "https://theftguard-53c59-default-rtdb.firebaseio.com/ :"
+        };
+        
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // Initialize the free map view
+        let map = L.map('map').setView([0, 0], 2);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+        let marker = null;
+
+        // Listen for live updates from your phone app!
+        database.ref('location').on('value', (snapshot) => {
+            const data = snapshot.val();
+            if(data && data.lat && data.lng) {
+                const lat = parseFloat(data.lat);
+                const lng = parseFloat(data.lng);
+                
+                document.getElementById('status').innerText = `Last Updated: Lat ${lat.toFixed(5)}, Lng ${lng.toFixed(5)}`;
+                
+                if(!marker) {
+                    marker = L.marker([lat, lng]).addTo(map);
+                    map.setView([lat, lng], 16);
+                } else {
+                    marker.setLatLng([lat, lng]);
+                    map.panTo([lat, lng]);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
